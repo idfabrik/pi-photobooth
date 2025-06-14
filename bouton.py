@@ -7,7 +7,7 @@ import os
 
 PIN_CAPTURE = 22       # Bouton photo
 PIN_SHUTDOWN = 18      # Bouton extinction
-LED = 27               # LED verte
+LED = 27               # LED rouge
 
 GPIO.setmode(GPIO.BCM)
 
@@ -33,8 +33,14 @@ try:
                 # Nettoyage des GPIO pour permettre leur réutilisation dans cab4.sh
                 GPIO.cleanup()
 
+                GPIO.cleanup(27)
+                GPIO.cleanup(17)
+
                 # Lancement du script photo
                 subprocess.run(["/home/pi/cab4.sh"])
+
+                GPIO.setup(27, GPIO.OUT)  
+                GPIO.setup(17, GPIO.OUT)  
 
                 # Reconfig LED et boutons après cab4.sh
                 GPIO.setmode(GPIO.BCM)

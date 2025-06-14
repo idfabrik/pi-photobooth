@@ -115,21 +115,6 @@ Files:
 - `bouton.py` – main GPIO controller
 - `cab4.sh` – photo capture and montage script
 - `bouton.service` – systemd unit to run `bouton.py` on boot
-- `install.sh` – optional installer
-
----
-
-## 🚀 Installation (Automated)
-
-```bash
-chmod +x install.sh
-./install.sh
-```
-
-This will:
-- Copy the systemd service
-- Enable it to launch on boot
-- Allow passwordless shutdown for user `pi`
 
 ---
 

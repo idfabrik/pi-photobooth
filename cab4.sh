@@ -57,21 +57,41 @@ gpioset --mode=exit gpiochip0 27=1
 sleep 0.2
 gpioset --mode=exit gpiochip0 27=0
 sleep 0.2
-gpioset --mode=exit gpiochip0 27=1
+gpioset --mode=exit gpiochip0 17=1
 sleep 0.2
-gpioset --mode=exit gpiochip0 27=0
-sleep 0.2
-gpioset --mode=exit gpiochip0 27=1
-sleep 0.2
-gpioset --mode=exit gpiochip0 27=0
+gpioset --mode=exit gpiochip0 &7=0
 sleep 0.2
 gpioset --mode=exit gpiochip0 27=1
 sleep 0.2
 gpioset --mode=exit gpiochip0 27=0
 sleep 0.2
+gpioset --mode=exit gpiochip0 17=1
+sleep 0.2
+gpioset --mode=exit gpiochip0 17=0
+sleep 0.2
 gpioset --mode=exit gpiochip0 27=1
 sleep 0.2
 gpioset --mode=exit gpiochip0 27=0
+sleep 0.2
+gpioset --mode=exit gpiochip0 17=1
+sleep 0.2
+gpioset --mode=exit gpiochip0 17=0
+sleep 0.2
+gpioset --mode=exit gpiochip0 27=1
+sleep 0.2
+gpioset --mode=exit gpiochip0 27=0
+sleep 0.2
+gpioset --mode=exit gpiochip0 17=1
+sleep 0.2
+gpioset --mode=exit gpiochip0 17=0
+sleep 0.2
+gpioset --mode=exit gpiochip0 27=1
+sleep 0.2
+gpioset --mode=exit gpiochip0 27=0
+sleep 0.2
+gpioset --mode=exit gpiochip0 17=1
+sleep 0.2
+gpioset --mode=exit gpiochip0 17=0
 sleep 0.2
 #gpioset --mode=exit gpiochip0 27=1
 #sleep 0.2

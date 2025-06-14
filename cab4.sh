@@ -53,25 +53,25 @@ montage "$TMP_DIR/temp1.jpg" "$TMP_DIR/temp2.jpg" \
 convert "$OUTPUT_NAME" -rotate 180 "$OUTPUT_NAME"
 
 # LED verte allumée à la fin
-gpioset --mode=exit gpiochip0 17=1
+gpioset --mode=exit gpiochip0 27=1
 sleep 0.2
-gpioset --mode=exit gpiochip0 17=0
+gpioset --mode=exit gpiochip0 27=0
 sleep 0.2
-gpioset --mode=exit gpiochip0 17=1
+gpioset --mode=exit gpiochip0 27=1
 sleep 0.2
-gpioset --mode=exit gpiochip0 17=0
+gpioset --mode=exit gpiochip0 27=0
 sleep 0.2
-gpioset --mode=exit gpiochip0 17=1
+gpioset --mode=exit gpiochip0 27=1
 sleep 0.2
-gpioset --mode=exit gpiochip0 17=0
+gpioset --mode=exit gpiochip0 27=0
 sleep 0.2
-gpioset --mode=exit gpiochip0 17=1
+gpioset --mode=exit gpiochip0 27=1
 sleep 0.2
-gpioset --mode=exit gpiochip0 17=0
+gpioset --mode=exit gpiochip0 27=0
 sleep 0.2
-gpioset --mode=exit gpiochip0 17=1
+gpioset --mode=exit gpiochip0 27=1
 sleep 0.2
-gpioset --mode=exit gpiochip0 17=0
+gpioset --mode=exit gpiochip0 27=0
 sleep 0.2
 #gpioset --mode=exit gpiochip0 27=1
 #sleep 0.2
@@ -80,7 +80,6 @@ sleep 0.2
 #gpioset --mode=exit gpiochip0 17=1
 #sleep 0.2
 #gpioset --mode=exit gpiochip0 17=0
-@gpioset --mode=exit gpiochip0 27=0
 
 echo "!! terminé !!"
 echo $TMP_DIR/temp$i.jpg

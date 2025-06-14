@@ -7,7 +7,7 @@
 > - Four different photos are taken with a visible lamp (relay-based flash).
 > - Output is high-contrast black and white, resembling silver gelatin prints.
 
-![Photobooth exemple](img-readme/image_20250610_230504.jpg)
+<img src="img-readme/image_20250610_230504.jpg" alt="Photobooth exemple" width="400"/>
 
 ---
 
@@ -147,11 +147,4 @@ Press the shutdown button connected to GPIO 18 to power off safely.
 
 ---
 
-## 📂 Example Output
-
-- 4 separate images: `image_*.jpg`
-- Final montage: `final_*.jpg`
-
----
-
-Enjoy your DIY photobooth! 🎉
+Enjoy  

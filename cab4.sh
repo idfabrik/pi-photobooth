@@ -3,7 +3,6 @@
 TMP_DIR="/var/www/html/tmp_id"
 mkdir -p "$TMP_DIR"
 
-
 mkdir -p /var/www/html/tmp_id
 chmod 775 /var/www/html/tmp_id
 chown pi:www-data /var/www/html/tmp_id
@@ -53,17 +52,35 @@ montage "$TMP_DIR/temp1.jpg" "$TMP_DIR/temp2.jpg" \
 
 convert "$OUTPUT_NAME" -rotate 180 "$OUTPUT_NAME"
 
-
 # LED verte allumée à la fin
 gpioset --mode=exit gpiochip0 17=1
-gpioset --mode=exit gpiochip0 27=1
 sleep 0.2
 gpioset --mode=exit gpiochip0 17=0
 sleep 0.2
 gpioset --mode=exit gpiochip0 17=1
 sleep 0.2
 gpioset --mode=exit gpiochip0 17=0
-gpioset --mode=exit gpiochip0 27=0
+sleep 0.2
+gpioset --mode=exit gpiochip0 17=1
+sleep 0.2
+gpioset --mode=exit gpiochip0 17=0
+sleep 0.2
+gpioset --mode=exit gpiochip0 17=1
+sleep 0.2
+gpioset --mode=exit gpiochip0 17=0
+sleep 0.2
+gpioset --mode=exit gpiochip0 17=1
+sleep 0.2
+gpioset --mode=exit gpiochip0 17=0
+sleep 0.2
+#gpioset --mode=exit gpiochip0 27=1
+#sleep 0.2
+#gpioset --mode=exit gpiochip0 17=0
+#sleep 0.2
+#gpioset --mode=exit gpiochip0 17=1
+#sleep 0.2
+#gpioset --mode=exit gpiochip0 17=0
+@gpioset --mode=exit gpiochip0 27=0
 
-
-echo "✅ Montage terminé : /var/www/html/image.jpg"
+echo "!! terminé !!"
+echo $TMP_DIR/temp$i.jpg

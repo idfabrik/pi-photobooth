@@ -7,15 +7,16 @@ import os
 
 PIN_CAPTURE = 22       # Bouton photo
 PIN_SHUTDOWN = 18      # Bouton extinction
-LED = 27               # LED rouge
+LED_VERTE = 27         # LED verte (statut)
+LED_ROUGE = 17         # LED rouge (flash ou état)
 
 GPIO.setmode(GPIO.BCM)
 
-# Configuration des GPIO
+# Configuration initiale
 GPIO.setup(PIN_CAPTURE, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 GPIO.setup(PIN_SHUTDOWN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(LED, GPIO.OUT)
-GPIO.output(LED, GPIO.HIGH)  # LED allumée = prêt
+GPIO.setup(LED_VERTE, GPIO.OUT)
+GPIO.output(LED_VERTE, GPIO.HIGH)  # Prêt
 
 print("📸 Bouton photo (GPIO22) | ⏻ Bouton arrêt (GPIO18)")
 
@@ -24,40 +25,34 @@ try:
     button_shutdown_was_pressed = False
 
     while True:
-        # Détection bouton photo
+        # Détection du bouton photo
         if GPIO.input(PIN_CAPTURE) == GPIO.LOW:
             if not button_photo_was_pressed:
                 print("📷 Photo déclenchée")
-                GPIO.output(LED, GPIO.LOW)
+                GPIO.output(LED_VERTE, GPIO.LOW)  # LED éteinte pendant capture
 
-                # Nettoyage des GPIO pour permettre leur réutilisation dans cab4.sh
+                # Nettoyer tous les GPIO pour libérer
                 GPIO.cleanup()
 
-                GPIO.cleanup(27)
-                GPIO.cleanup(17)
-
-                # Lancement du script photo
+                # Lancer le script de capture
                 subprocess.run(["/home/pi/cab4.sh"])
 
-                GPIO.setup(27, GPIO.OUT)  
-                GPIO.setup(17, GPIO.OUT)  
-
-                # Reconfig LED et boutons après cab4.sh
+                # Reconfigurer les GPIO après exécution
                 GPIO.setmode(GPIO.BCM)
                 GPIO.setup(PIN_CAPTURE, GPIO.IN, pull_up_down=GPIO.PUD_UP)
                 GPIO.setup(PIN_SHUTDOWN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-                GPIO.setup(LED, GPIO.OUT)
-                GPIO.output(LED, GPIO.HIGH)
+                GPIO.setup(LED_VERTE, GPIO.OUT)
+                GPIO.output(LED_VERTE, GPIO.HIGH)
 
                 button_photo_was_pressed = True
         else:
             button_photo_was_pressed = False
 
-        # Détection bouton extinction
+        # Détection du bouton extinction
         if GPIO.input(PIN_SHUTDOWN) == GPIO.LOW:
             if not button_shutdown_was_pressed:
                 print("⚠️  Extinction demandée...")
-                GPIO.output(LED, GPIO.LOW)
+                GPIO.output(LED_VERTE, GPIO.LOW)
                 time.sleep(1)
                 os.system("sudo shutdown now")
                 button_shutdown_was_pressed = True
@@ -68,6 +63,5 @@ try:
 
 except KeyboardInterrupt:
     print("\nArrêt du script par clavier")
-    GPIO.output(LED, GPIO.LOW)
+    GPIO.output(LED_VERTE, GPIO.LOW)
     GPIO.cleanup()
-
